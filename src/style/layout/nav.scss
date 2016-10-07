@@ -1,0 +1,21 @@
+nav{
+   position: fixed;
+   top: $headerHeihgt;
+   width: $navBarWidth;
+   height: 100%;
+   background-color: #292020;   
+   li{
+      a{
+        padding: 25px 10px;
+        color: #e0e0e0;
+        text-align: center;
+        display: block;
+        cursor: pointer;
+        &:hover{
+          background: #333;
+          color: #ffffff;
+          text-decoration: none;
+        }
+      }
+   }
+}
