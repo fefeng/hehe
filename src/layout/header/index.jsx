@@ -3,29 +3,37 @@ import { render } from 'react-dom';
 import nameSpaceModel from '../../model/namespace';
 import "./index.scss";
 
-import { doFilter, lengthMenu,namespace } from '../../actions';
+import history from 'history'
+
+import {changeNamespace } from '../../actions';
 
 var Select = require('rctui/Select');
+
 
 export default class Index extends Component {
   constructor(props) {
     super(props);
     this.state = {nameSpaceList :[]};
-    // nameSpaceModel.getNameSpaces().then(data=>{
-    //   let npList = data.items.map(item=>{
-    //     return item.metadata.name;
-    //   });
-    //   this.setState({nameSpaceList:["all"].concat(npList)});
-    // });
+    nameSpaceModel.getNamespaces().then(data=>{
+      let npList = data.items.map(item=>{
+        return item.metadata.name;
+      });
+      this.setState({nameSpaceList:["all"].concat(npList)});
+    });
   }
-  
-  npOnChange(value) {    
-    this.props.dispatch(doFilter(value));
+
+  npOnChange(value) {
+    let oldNamespace = nameSpaceModel.getcurrentNamespace();
+    if (value !== oldNamespace) { 
+      nameSpaceModel.changeNamespaces(value);
+      this.props.dispatch(changeNamespace(value));
+      location.hash = location.hash.replace("/" + oldNamespace + "/", "/" + value + "/");
+      location.reload();
+    }
   }
   
   render() {
-    // let data = this.state.nameSpaceList;
-    let data = ["all","default","kube-system"];
+    let data = this.state.nameSpaceList;
     return (
       <header className="header">
         <div className="right">
@@ -33,9 +41,8 @@ export default class Index extends Component {
             grid={{ width: 5 / 10 }}
             placeholder="请选择namespace"
             data={data}
-            value="all"
-            onChange={value => this.npOnChange(value)}
-            />
+            value={nameSpaceModel.getcurrentNamespace()}
+            onChange={value => this.npOnChange(value)}/>
         </div>
       </header>
     );

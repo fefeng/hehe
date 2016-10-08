@@ -5,16 +5,16 @@ import Header from "./header";
 import { Router, Route, Link, hashHistory, browserHistory} from 'react-router';
 
 import { connect } from 'react-redux';
-import { doFilter, lengthMenu, namespace } from '../actions';
+import { namespace } from '../actions';
+
+import nameSpaceModel from '../model/namespace';
 
 class Index extends Component {
     constructor(props) {
         super(props);
     }
-
     render() {
-        let namespace = this.props.operation.FILTER || "default";
-
+        let namespace = nameSpaceModel.getcurrentNamespace();
         return (
             <div>
                 <Header {...this.props}/>
@@ -37,7 +37,7 @@ class Index extends Component {
 
 function select(state) {
     return {
-        operation: state.operation
+        namespaces: state.changeNamespace
     };
 }
 

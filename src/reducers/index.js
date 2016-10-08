@@ -1,23 +1,12 @@
 import { combineReducers } from 'redux';
-import { FILTER, LENGHTMENU,NAMESPACE} from '../actions';
+import { CHANGENAMESPACE } from '../actions';
 
-function operation(state = { LENGHTMENU: 10 }, action) {
+function changeNamespace(state = {}, action) {
     switch (action.type) {
-        case FILTER:
-            return { FILTER: action.text }
-        case LENGHTMENU:
-            return { LENGHTMENU: action.text }
-        default:
-            return state;
-    }
-}
-
-function changeNamespace(state ,action){
-    switch (action.type) {
-        case NAMESPACE:
-            return { NAMESPACE: action.text }
-        case LENGHTMENU:
-            return { LENGHTMENU: action.text }
+        case CHANGENAMESPACE:
+            return Object.assign({}, state, {
+                currentNamespace: action.text
+            })
         default:
             return state;
     }
@@ -25,6 +14,6 @@ function changeNamespace(state ,action){
 
 //使用combineReducers 组合多个reducer
 const reactTableApp = combineReducers({
-    operation,
+    changeNamespace,
 })
 export default reactTableApp;

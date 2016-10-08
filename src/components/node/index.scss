@@ -1,12 +1,31 @@
 .host{
+    $host-item-width:250px;
     background-color: #f9f9f9;
     display: inline-block;
-    width: 200px;
+    width: $host-item-width;
     margin: 20px;
     border: 1px solid #dedede;
     padding: 10px;
+    float: left;
     .host-item{
        padding: 2px;
        color:#8a919c;
+       .title{
+           font-weight: bold;
+           width: 90px;
+           display: inline-block;
+           padding: 2px 5px;
+       }
+       .label{
+           background-color: #dedede;
+           border-radius: 48px;
+           padding: 2px 5px;
+           color: #8c8c8c;
+           display: inline-block;
+           max-width: $host-item-width - 40px;
+           overflow: hidden;
+           text-overflow: ellipsis;
+           white-space: nowrap;
+       }
     }
 }
