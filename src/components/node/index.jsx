@@ -37,7 +37,6 @@ export default class Index extends Component {
 
   render() {
     let data = this.state.nodeList;
-    console.log(data);
     return (
       <div>
         <h2>nodes</h2>

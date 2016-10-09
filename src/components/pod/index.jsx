@@ -52,7 +52,6 @@ class PodTable extends Component {
   }
 
   render() {
-    console.log(this.state.podList)
     return <Table
       bordered={true}
       data={this.state.podList}
