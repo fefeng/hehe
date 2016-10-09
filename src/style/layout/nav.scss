@@ -4,7 +4,7 @@ nav{
    width: $navBarWidth;
    height: 100%;
    background-color: #292020;   
-   li{
+   .nav-menu>li{
       a{
         padding: 25px 10px;
         color: #e0e0e0;
@@ -12,10 +12,35 @@ nav{
         display: block;
         cursor: pointer;
         &:hover{
-          background: #333;
+          background-color: #333;
           color: #ffffff;
           text-decoration: none;
         }
       }
+   }
+   .nav-menu{
+     position: relative;
+   }   
+   .item-list{
+     $width:180px;
+     width: $width;
+     top: 0;
+     right: $width * -1;
+     position: absolute;
+     list-style-type: none;
+     padding-left: 0;
+     background-color: #4a4a4a;
+     >li{
+       >a{
+         padding: 10px;
+         display: block;
+         color: #e0e0e0;
+         &:hover{
+           background-color: #333;
+           color: #ffffff;
+           text-decoration: none;
+         }
+       }
+     }
    }
 }

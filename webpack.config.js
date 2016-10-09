@@ -10,7 +10,6 @@ module.exports = {
         proxy: {
             '/api/*': {
                 target: 'http://192.168.15.171:8080',
-                // target: 'http://192.168.31.233:8080',
                 secure: false
             }
         }
