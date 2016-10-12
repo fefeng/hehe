@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 
 import PodsModel from '../../model/pods';
+import "./index.scss";
+
 var Table = require('rctui/Table');
 var Pagination = require('rctui/Pagination');
 
@@ -10,14 +12,12 @@ export default class Index extends Component {
     super(props);
 
   }
-
   render() {
     let namesapce = this.props.params.id;
-
     return (
-      <div>
+      <div className="pods">
         <h2>pod</h2>
-        <hr/>
+        <hr />
         <PodTable namesapce={namesapce} />
       </div>
     );
@@ -43,7 +43,7 @@ class PodTable extends Component {
           status: d.status.phase,
           Restarts: d.status.containerStatuses[0].restartCount,
           PodIP: d.status.podIP || "",
-          Port: d.spec.containers[0].ports,
+          Port: d.spec.containers[0] || "",
           labels: d.metadata.labels
         }
       });
@@ -56,7 +56,7 @@ class PodTable extends Component {
       bordered={true}
       data={this.state.podList}
       striped={true}
-      pagination={<Pagination size={20} total={this.state.podList.length} />}
+      pagination={<Pagination className="pagination" size={20} total={this.state.podList.length} />}
       headers={[
         { name: 'nodeName', header: 'nodeName', sortAble: true },
         { name: 'namespace', header: 'namespace', sortAble: true },
@@ -66,26 +66,30 @@ class PodTable extends Component {
         { name: 'PodIP', header: 'PodIP', sortAble: true },
         {
           name: 'Port', header: 'Port', content: (d) => {
-            let ports = d.Port[0]
-            let portsText = "";
-            if (ports.containerPort) {
-              portsText += " containerPort:" + ports.containerPort;
+            if (d.Port && d.Port.ports) {
+              let ports = d.Port.ports[0];
+              let portsText = "";
+              if (ports.containerPort) {
+                portsText += " containerPort:" + ports.containerPort;
+              }
+              if (ports.hostPort) {
+                portsText += " hostPort:" + ports.hostPort;
+              }
+              return portsText;
+            } else {
+              return "";
             }
-            if (ports.hostPort) {
-              portsText += " hostPort:" + ports.hostPort;
-            }
-            return portsText || "";
           }
         },
         {
           name: 'labels', header: 'labels', content: (d) => {
             let labels = d.labels
             let labelText = Object.keys(labels).map((item, i) => {
-              return item + ":" + labels[item];
+              return <span key={i} className="label">{item}{labels[item]}</span>;
             });
             return labelText;
           }
         }
-      ]}/>
+      ]} />
   }
 }

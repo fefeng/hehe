@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 import Header from "./header";
 
-import { Router, Route, Link, hashHistory, browserHistory} from 'react-router';
+import { Router, Route, Link, hashHistory, browserHistory } from 'react-router';
 
 import { connect } from 'react-redux';
 import { namespace } from '../actions';
@@ -23,9 +23,9 @@ class Index extends Component {
             node: [],
             service: [],
             replica: [
-                { icon: "replica1", text: "Deployments" ,path:"dep"},
-                { icon: "replica2", text: "Replica Sets" ,path:"rs"},
-                { icon: "replica3", text: "Replication Controllers",path:"rc"}
+                { icon: "replica1", text: "Deployments", path: "dep" },
+                { icon: "replica2", text: "Replica Sets", path: "rs" },
+                { icon: "replica3", text: "Replication Controllers", path: "rc" }
             ],
             pod: [],
             volume: [],
@@ -49,7 +49,7 @@ class Index extends Component {
 
         return (
             <div>
-                <Header {...this.props}/>
+                <Header {...this.props} />
                 <nav>
                     <ul className="list-unstyled nav-menu" onMouseLeave={() => { this.liOnMouseLeave() } }>
                         {

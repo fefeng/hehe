@@ -13,7 +13,7 @@ let store = createStore(reducers);
 
 render(
     <Provider store={store}>
-        <Router routes={routes} history={hashHistory} />
+        <Router routes={routes} history={browserHistory} />
     </Provider>,
     document.getElementById('root')
 );

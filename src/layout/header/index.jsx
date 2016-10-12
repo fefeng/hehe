@@ -9,7 +9,6 @@ import {changeNamespace } from '../../actions';
 
 var Select = require('rctui/Select');
 
-
 export default class Index extends Component {
   constructor(props) {
     super(props);
@@ -27,8 +26,7 @@ export default class Index extends Component {
     if (value !== oldNamespace) { 
       nameSpaceModel.changeNamespaces(value);
       this.props.dispatch(changeNamespace(value));
-      location.hash = location.hash.replace("/" + oldNamespace + "/", "/" + value + "/");
-      location.reload();
+      location.pathname = location.pathname.replace("/" + oldNamespace + "/", "/" + value + "/");
     }
   }
   
