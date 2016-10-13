@@ -2,18 +2,17 @@ let webpack = require('webpack');
 let helpers = require('./helpers');
 let HtmlWebpackPlugin = require('html-webpack-plugin');
 let ExtractTextPlugin = require('extract-text-webpack-plugin');
-
 let path = require("path");
 
-module.exports = {
-  // entry: [
-  //   'webpack/hot/only-dev-server', //改变文件立刻刷新，而且保存了现有的state
-  //   './src/app.jsx' //入口配置文件
-  // ],
 
+var precss = require('precss');
+var autoprefixer = require('autoprefixer');
+
+module.exports = {
+  // 程序入口
   entry: {
     bundle: './src/app.jsx',
-    vendor: ['react']
+    vendor: ['react', 'react-dom', 'react-router','redux', 'react-redux']
   },
 
   resolve: {
@@ -41,7 +40,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('style', 'css!sass')
+        loader: ExtractTextPlugin.extract('style', 'css!sass!postcss-loader')
       },
       {
         test: /\.html$/,
@@ -53,18 +52,18 @@ module.exports = {
       }]
   },
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin('vendor', 'js/vendor.[hash].js'),
-    new ExtractTextPlugin('css/app.[hash].css'),
+    new webpack.optimize.CommonsChunkPlugin('vendor', 'js/vendor.[hash].js'),     //  分拆文件
+    new ExtractTextPlugin('css/app.[hash].css'),                                  //  sass文件单独打包
     new webpack.NoErrorsPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
+    new webpack.HotModuleReplacementPlugin(),                                     //  热替换模块
     new HtmlWebpackPlugin({
-      filename: "index.html",
-      template: './index.html',
-      //压缩HTML文件
+      filename: "index.html",                                                     //  文件路径
+      template: './index.html',                                                   //  文件模板
       minify: {
-        // removeComments: true,	//移除HTML中的注释
-        collapseWhitespace: true	//删除空白符与换行符
+        // removeComments: true,	                                                //  移除HTML中的注释
+        collapseWhitespace: true	                                                //  删除空白符与换行符
       }
     })
-  ]
+  ],
+  postcss: [autoprefixer({ browsers: ['last 2 versions'] })]
 };
