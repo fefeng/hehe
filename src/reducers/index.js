@@ -15,5 +15,6 @@ function changeNamespace(state = {}, action) {
 //使用combineReducers 组合多个reducer
 const reactTableApp = combineReducers({
     changeNamespace,
-})
+});
+
 export default reactTableApp;

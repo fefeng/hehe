@@ -6,8 +6,10 @@ module.exports = webpackMerge(commonConfig, {
    devtool: 'cheap-module-eval-source-map',
 
    output: {
-      path: './build',
-      filename: "/bundle.js" //输出文件，即index.html需要引入的文件
+      path: helpers.root('dist'),
+      publicPath: "/",
+      filename: 'js/[name].[hash].js',
+      chunkFilename: 'js/[id].[hash].chunk.js'
    },
 
    devServer: {

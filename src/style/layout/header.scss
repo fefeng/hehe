@@ -7,3 +7,14 @@ header{
    right: 0;
    z-index: 100;
 }
+.header{
+   .right{
+      width: 400px;
+      position: absolute;
+      right: 0;
+   }
+   .np-select{
+      float: right;
+      margin: 8px 20px 6px 10px;
+   }
+}

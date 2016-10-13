@@ -9,11 +9,11 @@ export default class Index extends Component {
   }
 
   render() {
-     return (
-       <div>
+    return (
+      <div>
         <h2>service</h2>
-        <hr/>
-         <ServiceItem/>
+        <hr />
+        <ServiceItem />
       </div>
     );
   }

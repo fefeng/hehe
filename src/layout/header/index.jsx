@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import nameSpaceModel from '../../model/namespace';
-import "./index.scss";
+// import "./index.scss";
 
 import history from 'history'
 

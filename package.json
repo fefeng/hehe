@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "hehe",
   "scripts": {
-    "start": "webpack-dev-server --hot --colors --inline --history-api-fallback --progress --port 8080",
+    "start": "webpack-dev-server --hot --colors --inline --history-api-fallback --progress --host 0.0.0.0 --port 8080",
     "build": "rm -rf dist && webpack --config config/webpack.prod.js --progress --profile --bail"
   },
   "author": "",
@@ -19,7 +19,9 @@
     "css-loader": "^0.12.1",
     "expose": "^0.1.4",
     "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.9.0",
     "history": "^3.0.0",
+    "html-loader": "^0.4.4",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
     "lodash": "^3.10.1",
@@ -43,6 +45,7 @@
     "webpack-merge": "^0.14.1"
   },
   "devDependencies": {
+    "extract-text-webpack-plugin": "^1.0.1",
     "html-webpack-plugin": "^2.22.0"
   }
 }
