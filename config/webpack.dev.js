@@ -4,7 +4,7 @@ var helpers = require('./helpers');
 
 module.exports = webpackMerge(commonConfig, {
    devtool: 'cheap-module-eval-source-map',
-
+   
    output: {
       path: helpers.root('dist'),
       publicPath: "/",
@@ -12,6 +12,7 @@ module.exports = webpackMerge(commonConfig, {
       chunkFilename: 'js/[id].[hash].chunk.js'
    },
 
+   // 代理服务器，类似于nginx
    devServer: {
       hot: true,
       inline: true,
