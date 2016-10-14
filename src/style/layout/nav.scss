@@ -3,7 +3,8 @@ nav{
    top: $headerHeihgt;
    width: $navBarWidth;
    height: 100%;
-   background-color: #292020;   
+   background-color: #292020;  
+   z-index: 9999999999; 
    .nav-menu>li{
       a{
         padding: 25px 10px;

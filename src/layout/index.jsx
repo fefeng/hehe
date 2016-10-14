@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 import Header from "./header";
 
-import { Router, Route, Link, hashHistory, browserHistory } from 'react-router';
+import { Route, Link } from 'react-router';
 
 import { connect } from 'react-redux';
 import { namespace } from '../actions';
@@ -29,7 +29,7 @@ class Index extends Component {
                 { icon: "replica3", text: "Replication Controllers", path: "rc" }
             ],
             pod: [],
-            volume: [],
+            volume: []
         }
         return value ? menus[value] : menus;
     }
@@ -86,7 +86,7 @@ class Index extends Component {
 
 function select(state) {
     return {
-        namespaces: state.changeNamespace
+        namespaces: state.namespaces
     };
 }
 

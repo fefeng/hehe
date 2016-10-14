@@ -12,14 +12,17 @@ import Volume from './components/volume';
 
 const Routes = (
   <Route path="/" component={App}>
-    
-    <Route path="namespace/:id/node(/:id)" component={Node} />
-    <Route path="namespace/:id/pod" component={Pod} />
-    <Route path="namespace/:id/replica" component={Replica} />
-    <Route path="namespace/:id/service" component={Service} />
-    <Route path="namespace/:id/volume" component={Volume} />
-
-    <Route path="*"/>  // 404路由 
+    <Route path="namespace">
+      <Route path=":id/node(/:id)" component={Node} />
+      <Route path=":id/pod" component={Pod} />
+      <Route path=":id/dep" component={Replica} />
+      <Route path=":id/rs" component={Replica} />
+      <Route path=":id/rc" component={Replica} />
+      <Route path=":id/service" component={Service} />
+      <Route path=":id/volume" component={Volume} />
+      <Route path=":id/namespace" component={Namespace} />
+    </Route>
+    <Route path="*" />  // 404路由 
   </Route>
 );
 export default Routes;
