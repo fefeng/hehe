@@ -12,7 +12,7 @@ module.exports = {
   // 程序入口
   entry: {
     bundle: './src/app.jsx',
-    vendor: ['react', 'react-dom', 'react-router','redux', 'react-redux']
+    vendor: ['react', 'react-dom', 'react-router', 'redux', 'react-redux']
   },
 
   resolve: {
@@ -61,7 +61,7 @@ module.exports = {
       template: './index.html',                                                   //  文件模板
       minify: {
         // removeComments: true,	                                                //  移除HTML中的注释
-        collapseWhitespace: true	                                                //  删除空白符与换行符
+        // collapseWhitespace: true	                                                //  删除空白符与换行符
       }
     })
   ],

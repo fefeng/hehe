@@ -12,7 +12,6 @@ import Volume from './components/volume';
 const Routes = (
   <Route path="/" component={App}>
     <Route path="namespace/:id/node(/:id)" component={Node} />
-    <Route path="namespace/:id/node(/:id)" component={Node} />
     <Route path="namespace/:id/pod" component={Pod} />
     <Route path="namespace/:id/replica" component={Replica} />
     <Route path="namespace/:id/service" component={Service} />
