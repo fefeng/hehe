@@ -76,7 +76,7 @@ class Index extends Component {
                         </ul>
                     </nav>
                     <main>
-                        <div>{this.props.children}</div>
+                        <div className="main-container">{this.props.children}</div>
                     </main>
                 </div>
             );

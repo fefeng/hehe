@@ -41,13 +41,13 @@ export default class Index extends Component {
       <div>
         <h2>nodes</h2>
         <hr/>
-        <ul>
+        <section>
           {
             data.map((item, i) => {
               return <Node key={i} podSet={this.state.podSet} nodeInfo={item} />
             })
           }
-        </ul>
+        </section>
       </div>
     );
   }

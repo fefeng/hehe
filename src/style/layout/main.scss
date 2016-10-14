@@ -1,6 +1,6 @@
 main{
     margin-left: $navBarWidth;
-    padding: 20px;
+    padding: 30px;
     margin-top: 50px;
     hr{
         margin-bottom: 20px;
@@ -9,6 +9,10 @@ main{
     }  
 }
 
+.main-container{
+    background-color: white;
+    padding: 20px;
+}
 
 body{
    background:#f3f3f3;

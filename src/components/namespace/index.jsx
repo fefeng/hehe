@@ -13,7 +13,7 @@ export default class Index extends Component {
       <div className="namespace">
         <h2>namesp12312ace</h2>
         <hr/>
-      </div>      
+      </div>
     );
   }
 }

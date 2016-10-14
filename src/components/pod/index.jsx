@@ -17,7 +17,7 @@ export default class Index extends Component {
     return (
       <div className="pods">
         <h2>pod</h2>
-        <hr />
+        <hr/>
         <PodTable namesapce={namesapce} />
       </div>
     );
@@ -55,7 +55,6 @@ class PodTable extends Component {
     return <Table
       bordered={true}
       data={this.state.podList}
-      striped={true}
       pagination={<Pagination className="pagination" size={20} total={this.state.podList.length} />}
       headers={[
         { name: 'nodeName', header: 'nodeName', sortAble: true },

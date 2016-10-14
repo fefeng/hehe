@@ -6,9 +6,9 @@
     margin: 20px;
     border: 1px solid #dedede;
     padding: 10px;
-    float: left;
+    vertical-align: top;
     .host-item{
-        user-select:none;
+       user-select:none;
        padding: 2px;
        color:#8a919c;
        .title{
