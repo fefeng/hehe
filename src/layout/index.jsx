@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import { namespace } from '../actions';
 
 import nameSpaceModel from '../model/namespace';
+import Page404 from '../components/page404';
 
 
 class Index extends Component {
@@ -36,9 +37,8 @@ class Index extends Component {
     liOnMouseEnter(value, e) {
         this.setState({ menuList: this.getMenuList(value) });
         this.setState({ offsetTop: e.target.offsetTop });
-
-        // debugger;
     }
+
     liOnMouseLeave() {
         this.setState({ menuList: [] });
     }
@@ -47,35 +47,40 @@ class Index extends Component {
         let namespace = nameSpaceModel.getcurrentNamespace();
         let menuList = this.getMenuList();
 
-        return (
-            <div>
-                <Header {...this.props} />
-                <nav>
-                    <ul className="list-unstyled nav-menu" onMouseLeave={() => { this.liOnMouseLeave() } }>
-                        {
-                            Object.keys(menuList).map((item, i) => {
-                                return (
-                                    <li key={i} onMouseEnter={(e) => { this.liOnMouseEnter(item, e) } }>
-                                        <Link to={`/namespace/${namespace}/${item}`} >{item}</Link>
-                                    </li>
-                                )
-                            })
-                        }
-
-                        <ul className='item-list' style={{ top: this.state.offsetTop }}>
+        let routeLen = this.props.routes.length;
+        if (this.props.routes[routeLen - 1].path === "*") {
+            return <Page404 />
+        } else {
+            return (
+                <div>
+                    <Header {...this.props} />
+                    <nav>
+                        <ul className="list-unstyled nav-menu" onMouseLeave={() => { this.liOnMouseLeave() } }>
                             {
-                                this.state.menuList.map((item, i) => {
-                                    return <li key={i}><Link to={`/namespace/${namespace}/${item.path}`} >{item.text}</Link></li>
+                                Object.keys(menuList).map((item, i) => {
+                                    return (
+                                        <li key={i} onMouseEnter={(e) => { this.liOnMouseEnter(item, e) } }>
+                                            <Link to={`/namespace/${namespace}/${item}`} >{item}</Link>
+                                        </li>
+                                    )
                                 })
                             }
+
+                            <ul className='item-list' style={{ top: this.state.offsetTop }}>
+                                {
+                                    this.state.menuList.map((item, i) => {
+                                        return <li key={i}><Link to={`/namespace/${namespace}/${item.path}`} >{item.text}</Link></li>
+                                    })
+                                }
+                            </ul>
                         </ul>
-                    </ul>
-                </nav>
-                <main>
-                    <div>{this.props.children}</div>
-                </main>
-            </div>
-        );
+                    </nav>
+                    <main>
+                        <div>{this.props.children}</div>
+                    </main>
+                </div>
+            );
+        }
     }
 }
 

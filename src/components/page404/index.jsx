@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 
+import { Link } from 'react-router';
+import './index.scss';
 var ReactUI = require('rctui')
 
 export default class Index extends Component {
@@ -10,10 +12,11 @@ export default class Index extends Component {
    
   render() {
     return (
-      <div className="namespace">
-        <h2>namesp12312ace</h2>
+      <div className="page-404">
+        <h1>抱歉，没有找到该页面</h1>
         <hr/>
-      </div>      
+        <Link className="btn btn-default" to={`/`} >返回主页</Link>
+      </div>
     );
   }
 }

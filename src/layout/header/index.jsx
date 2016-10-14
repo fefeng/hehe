@@ -5,31 +5,31 @@ import nameSpaceModel from '../../model/namespace';
 
 import history from 'history'
 
-import {changeNamespace } from '../../actions';
+import { changeNamespace } from '../../actions';
 
 var Select = require('rctui/Select');
 
 export default class Index extends Component {
   constructor(props) {
     super(props);
-    this.state = {nameSpaceList :[]};
-    nameSpaceModel.getNamespaces().then(data=>{
-      let npList = data.items.map(item=>{
+    this.state = { nameSpaceList: [] };
+    nameSpaceModel.getNamespaces().then(data => {
+      let npList = data.items.map(item => {
         return item.metadata.name;
       });
-      this.setState({nameSpaceList:["all"].concat(npList)});
+      this.setState({ nameSpaceList: ["all"].concat(npList) });
     });
   }
 
   npOnChange(value) {
     let oldNamespace = nameSpaceModel.getcurrentNamespace();
-    if (value !== oldNamespace) { 
+    if (value !== oldNamespace) {
       nameSpaceModel.changeNamespaces(value);
       this.props.dispatch(changeNamespace(value));
       location.pathname = location.pathname.replace("/" + oldNamespace + "/", "/" + value + "/");
     }
   }
-  
+
   render() {
     let data = this.state.nameSpaceList;
     return (
@@ -40,7 +40,7 @@ export default class Index extends Component {
             placeholder="请选择namespace"
             data={data}
             value={nameSpaceModel.getcurrentNamespace()}
-            onChange={value => this.npOnChange(value)}/>
+            onChange={value => this.npOnChange(value)} />
         </div>
       </header>
     );
