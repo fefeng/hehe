@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import { Navigation } from "react-router";
-import reactMixin from 'react-mixin';
 
 import "./index.scss";
 
