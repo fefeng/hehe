@@ -13,7 +13,7 @@ export default class Index extends Component {
 
   }
   render() {
-    let namesapce = this.props.params.id;
+    let namesapce = this.props.params.nsid;
     return (
       <div className="pods">
         <h2>pod</h2>
@@ -84,7 +84,7 @@ class PodTable extends Component {
           name: 'labels', header: 'labels', content: (d) => {
             let labels = d.labels
             let labelText = Object.keys(labels).map((item, i) => {
-              return <span key={i} className="label">{item}{labels[item]}</span>;
+              return <span key={i} className="k8s-label">{item}{labels[item]}</span>;
             });
             return labelText;
           }

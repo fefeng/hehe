@@ -30,12 +30,12 @@ export default class Node extends Component {
           {this.props.podSet[nodeInfo.status.addresses[0].address]}
         </div>
         <div className="host-item">
-          <span className="title">标签 </span>
+          <span className="title">标签</span>
           {
             Object.keys(nodeInfo.metadata.labels).map((item, i) => {
               let label = nodeInfo.metadata.labels;
               let text = item + ": " + label[item];
-              return <span className="label" key={i} title={text}>{text} </span>
+              return <span className="label" key={i} title={text}>{text}</span>
             })
           }
         </div>

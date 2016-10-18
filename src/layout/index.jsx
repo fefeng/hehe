@@ -29,7 +29,6 @@ class Index extends Component {
                 { icon: "replica3", text: "Replication Controllers", path: "rc" }
             ],
             pod: [],
-            volume: []
         }
         return value ? menus[value] : menus;
     }

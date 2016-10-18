@@ -13,7 +13,7 @@ export default class Index extends Component {
       <div>
         <h2>service</h2>
         <hr />
-        <ServiceItem />
+        <ServiceItem {...this.props}/>
       </div>
     );
   }
