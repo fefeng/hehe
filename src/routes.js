@@ -12,6 +12,7 @@ import Volume from './components/volume';
 
 const Routes = (
   <Route path="/" component={App}>
+    <IndexRoute component={Node}/>
     <Route path="namespace">
       <Route path=":nsid/node(/:id)" component={Node} />
       <Route path=":nsid/pod" component={Pod} />

@@ -9,9 +9,9 @@ export default class Index extends Component {
     super(props);
     this.nodeData();
     this.getPodData();
-    this.state = { nodeList: [], podSet: {}};
+    this.state = { nodeList: [], podSet: {} };
   }
-
+  
   nodeData() {
     let then = this;
     NodeModel.getNodes().then(data => {
@@ -20,14 +20,13 @@ export default class Index extends Component {
   }
 
   getPodData() {
-
     podModel.getPods().then(data => {
       let podSet = {};
       data.items.map(item => {
         let hostIP = item.status.hostIP;
         if (podSet[hostIP]) {
           podSet[hostIP] = podSet[hostIP] + 1;
-        } else { 
+        } else {
           podSet[hostIP] = 1;
         }
       })
@@ -40,7 +39,7 @@ export default class Index extends Component {
     return (
       <div>
         <h2>nodes</h2>
-        <hr/>
+        <hr />
         <section>
           {
             data.map((item, i) => {

@@ -51,7 +51,6 @@ export default class Index extends Component {
             { name: 'clusterIP', header: 'ClusterIP', sortAble: true },
             {
               name: 'ports', header: 'port', sortAble: true, content: (d) => {
-                console.log(d.ports)
                 if (d.ports) {
                   return d.ports[0].port;
                 }
