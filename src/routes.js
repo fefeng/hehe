@@ -1,7 +1,7 @@
-import React, { PropTypes } from 'react';
-import { Router, Route, IndexRoute, Link } from 'react-router';
+import React from 'react';
+import { Route, IndexRoute } from 'react-router';
 
-import App from "./layout";
+import App from './layout';
 import Namespace from './components/namespace';
 import Node from './components/node';
 import Pod from './components/pod';
@@ -12,7 +12,7 @@ import Volume from './components/volume';
 
 const Routes = (
   <Route path="/" component={App}>
-    <IndexRoute component={Node}/>
+    <IndexRoute component={Node} />
     <Route path="namespace">
       <Route path=":nsid/node(/:id)" component={Node} />
       <Route path=":nsid/pod" component={Pod} />

@@ -6,7 +6,7 @@ function changeNamespace(state = {}, action) {
         case CHANGENAMESPACE:
             return Object.assign({}, state, {
                 currentNamespace: action.text
-            })
+            });
         default:
             return state;
     }

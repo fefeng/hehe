@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { render } from 'react-dom';
 import Node from './node';
-import NodeModel from "../../model/node";
-import podModel from "../../model/pods";
+import NodeModel from '../../model/node';
+import podModel from '../../model/pods';
 
 export default class Index extends Component {
   constructor(props) {
@@ -11,7 +10,7 @@ export default class Index extends Component {
     this.getPodData();
     this.state = { nodeList: [], podSet: {} };
   }
-  
+
   nodeData() {
     let then = this;
     NodeModel.getNodes().then(data => {
@@ -29,7 +28,7 @@ export default class Index extends Component {
         } else {
           podSet[hostIP] = 1;
         }
-      })
+      });
       this.setState({ podSet });
     });
   }
@@ -43,7 +42,7 @@ export default class Index extends Component {
         <section>
           {
             data.map((item, i) => {
-              return <Node key={i} podSet={this.state.podSet} nodeInfo={item} />
+              return <Node key={i} podSet={this.state.podSet} nodeInfo={item} />;
             })
           }
         </section>

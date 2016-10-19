@@ -18,6 +18,7 @@
     "bootstrap": "^3.3.7",
     "classnames": "^2.2.5",
     "css-loader": "^0.12.1",
+    "eslint-plugin-react": "^6.4.1",
     "expose": "^0.1.4",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
@@ -45,5 +46,10 @@
     "webpack": "^1.12.12",
     "webpack-dev-server": "^1.14.1",
     "webpack-merge": "^0.14.1"
+  },
+  "devDependencies": {
+    "eslint": "^3.8.1",
+    "eslint-loader": "^1.6.0",
+    "eslint-plugin-react": "^6.4.1"
   }
 }

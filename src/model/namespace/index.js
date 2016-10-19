@@ -1,4 +1,4 @@
-import refetch from "refetch";
+import refetch from 'refetch';
 
 const Modle = {
       getNamespaces() {
@@ -9,13 +9,13 @@ const Modle = {
             if (window.localStorage) {
                   window.localStorage.NAMESAPCE = namesapce;
             } else {
-                  document.cookie = "NAMESAPCE="+namesapce
+                  document.cookie = 'NAMESAPCE=' + namesapce;
             }
       },
 
       getcurrentNamespace() {
             return window.localStorage.NAMESAPCE;
       }
-}
+};
 
 export default Modle;

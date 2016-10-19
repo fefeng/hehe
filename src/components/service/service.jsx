@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { render } from 'react-dom';
-import ServiceModel from "../../model/services";
+import ServiceModel from '../../model/services';
 
 import './service.scss';
 var Table = require('rctui/Table');
@@ -16,7 +15,7 @@ export default class Index extends Component {
   getServicesData() {
     let namespace = this.props.params.nsid;
     ServiceModel.getServices(namespace).then(data => {
-      let serviceList = data.items.map((item, i) => {
+      let serviceList = data.items.map((item) => {
         return {
           name: item.metadata.name,
           labels: item.metadata.labels,
@@ -24,7 +23,7 @@ export default class Index extends Component {
           ports: item.spec.ports,
           targetPort: item.spec.ports,
           nodePort: item.spec.ports
-        }
+        };
       });
       this.setState({ serviceList });
     });
@@ -44,8 +43,8 @@ export default class Index extends Component {
             {
               name: 'labels', header: 'labels', sortAble: true, content: (d) => {
                 return Object.keys(d.labels).map((label, i) => {
-                  return <span className="k8s-label" key={i}>{label}:{d.labels[label]}</span>
-                })
+                  return <span className="k8s-label" key={i}>{label}:{d.labels[label]}</span>;
+                });
               }
             },
             { name: 'clusterIP', header: 'ClusterIP', sortAble: true },
