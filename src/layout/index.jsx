@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import { render } from 'react-dom';
-import Header from "./header";
+import Header from './header';
 
-import { Route, Link } from 'react-router';
+import { Link } from 'react-router';
 
 import { connect } from 'react-redux';
-import { namespace } from '../actions';
 
 import nameSpaceModel from '../model/namespace';
 import Page404 from '../components/page404';
@@ -16,7 +14,7 @@ class Index extends Component {
         super(props);
         this.state = {
             menuList: [],
-        }
+        };
     }
 
     getMenuList(value) {
@@ -24,12 +22,12 @@ class Index extends Component {
             node: [],
             service: [],
             replica: [
-                { icon: "replica1", text: "Deployments", path: "dep" },
-                { icon: "replica2", text: "Replica Sets", path: "rs" },
-                { icon: "replica3", text: "Replication Controllers", path: "rc" }
+                { icon: 'replica1', text: 'Deployments', path: 'dep' },
+                { icon: 'replica2', text: 'Replica Sets', path: 'rs' },
+                { icon: 'replica3', text: 'Replication Controllers', path: 'rc' }
             ],
             pod: [],
-        }
+        };
         return value ? menus[value] : menus;
     }
 
@@ -47,28 +45,28 @@ class Index extends Component {
         let menuList = this.getMenuList();
 
         let routeLen = this.props.routes.length;
-        if (this.props.routes[routeLen - 1].path === "*") {
-            return <Page404 />
+        if (this.props.routes[routeLen - 1].path === '*') {
+            return <Page404 />;
         } else {
             return (
                 <div>
                     <Header {...this.props} />
                     <nav>
-                        <ul className="list-unstyled nav-menu" onMouseLeave={() => { this.liOnMouseLeave() } }>
+                        <ul className="list-unstyled nav-menu" onMouseLeave={() => { this.liOnMouseLeave(); } }>
                             {
                                 Object.keys(menuList).map((item, i) => {
                                     return (
-                                        <li key={i} onMouseEnter={(e) => { this.liOnMouseEnter(item, e) } }>
+                                        <li key={i} onMouseEnter={(e) => { this.liOnMouseEnter(item, e); } }>
                                             <Link to={`/namespace/${namespace}/${item}`} >{item}</Link>
                                         </li>
-                                    )
+                                    );
                                 })
                             }
 
-                            <ul className='item-list' style={{ top: this.state.offsetTop }}>
+                            <ul className="item-list" style={{ top: this.state.offsetTop }}>
                                 {
                                     this.state.menuList.map((item, i) => {
-                                        return <li key={i}><Link to={`/namespace/${namespace}/${item.path}`} >{item.text}</Link></li>
+                                        return <li key={i}><Link to={`/namespace/${namespace}/${item.path}`} >{item.text}</Link></li>;
                                     })
                                 }
                             </ul>

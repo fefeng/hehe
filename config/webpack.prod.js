@@ -2,18 +2,16 @@ var webpack = require('webpack');
 var webpackMerge = require('webpack-merge');
 var commonConfig = require('./webpack.common.js');
 var helpers = require('./helpers');
-var path = require("path");
 
 module.exports = webpackMerge(commonConfig, {
    output: {
       path: helpers.root('dist'),
-      publicPath: "/",
+      publicPath: '/',
       filename: 'js/[name].[hash].js',
       chunkFilename: 'js/[id].[hash].chunk.js'
    },
 
    plugins: [
-
       new webpack.optimize.UglifyJsPlugin({
          compress: {
             warnings: false

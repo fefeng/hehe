@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { render } from 'react-dom';
 
 export default class Index extends Component {
   constructor(props) {
@@ -7,10 +6,10 @@ export default class Index extends Component {
   }
 
   render() {
-     return (
-       <div>
+    return (
+      <div>
         <h2>volume</h2>
-        <hr/>
+        <hr />
       </div>
     );
   }

@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import PodsModel from '../../model/pods';
 import './index.scss';
 
-var Table = require('rctui/Table');
-var Pagination = require('rctui/Pagination');
+let Table = require('rctui/Table');
+let Pagination = require('rctui/Pagination');
 
 export default class Index extends Component {
   constructor(props) {

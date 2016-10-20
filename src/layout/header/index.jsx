@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
-import { render } from 'react-dom';
 import nameSpaceModel from '../../model/namespace';
-// import "./index.scss";
-
-import history from 'history'
 
 import { changeNamespace } from '../../actions';
 
-var Select = require('rctui/Select');
+let Select = require('rctui/Select');
 
 export default class Index extends Component {
   constructor(props) {
@@ -17,7 +13,7 @@ export default class Index extends Component {
       let npList = data.items.map(item => {
         return item.metadata.name;
       });
-      this.setState({ nameSpaceList: ["all"].concat(npList) });
+      this.setState({ nameSpaceList: ['all'].concat(npList) });
     });
   }
 
@@ -26,7 +22,7 @@ export default class Index extends Component {
     if (value !== oldNamespace) {
       nameSpaceModel.changeNamespaces(value);
       this.props.dispatch(changeNamespace(value));
-      location.pathname = location.pathname.replace("/" + oldNamespace + "/", "/" + value + "/");
+      location.pathname = location.pathname.replace('/' + oldNamespace + '/', '/' + value + '/');
     }
   }
 
@@ -40,7 +36,7 @@ export default class Index extends Component {
             placeholder="请选择namespace"
             data={data}
             value={nameSpaceModel.getcurrentNamespace()}
-            onChange={value => this.npOnChange(value)} />
+            onChange={value => { this.npOnChange(value); } } />
         </div>
       </header>
     );

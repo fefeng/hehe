@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import { CHANGENAMESPACE } from '../actions';
 
+
 function changeNamespace(state = {}, action) {
     switch (action.type) {
         case CHANGENAMESPACE:
