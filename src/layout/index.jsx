@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Header from './header';
 
 import { Link } from 'react-router';
-
 import { connect } from 'react-redux';
 
 import nameSpaceModel from '../model/namespace';
@@ -43,7 +42,6 @@ class Index extends Component {
     render() {
         let namespace = nameSpaceModel.getcurrentNamespace();
         let menuList = this.getMenuList();
-
         let routeLen = this.props.routes.length;
         if (this.props.routes[routeLen - 1].path === '*') {
             return <Page404 />;
@@ -83,7 +81,7 @@ class Index extends Component {
 
 function select(state) {
     return {
-        namespaces: state.namespaces
+        namespaces: state.changeNamespace
     };
 }
 

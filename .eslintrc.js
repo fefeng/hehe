@@ -78,6 +78,7 @@ module.exports = {
         "no-this-before-super": 2, // 禁止在构造函数中，在调用 super() 之前使用 this 或 super
         "no-var": 1, // 要求使用 let 或 const 而不是 var
         "prefer-template": 0, // 要求使用模板字面量而非字符串连接
-
+        "no-console": 1,
+        "no-debugger": 1,
     }
 };
