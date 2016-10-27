@@ -10,16 +10,8 @@ node {
    git url: 'https://github.com/kesselborn/jenkinsfile'
    sh 'git clean -fdx; sleep 4;'
 
-   // Get the maven tool.
-   // ** NOTE: This 'mvn' maven tool must be configured
-   // **       in the global configuration.
-  
-
    stage 'build'
- 
-
-   stage 'test'
- 
+   sh 'pwd'
 
    stage 'archive'
    archive 'target/*.jar'
