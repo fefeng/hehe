@@ -34,9 +34,9 @@ module.exports = {
         "no-eval": 2, // 禁用 eval()
 
         "no-extend-native": 2, // 禁止扩展原生类型
-        "no-magic-numbers": [1, {
-            "ignore": [0, -1, 1]
-        }], // 禁用魔术数字(3.14什么的用常量代替)
+        // "no-magic-numbers": [1, {
+        //     "ignore": [0, -1, 1]
+        // }], // 禁用魔术数字(3.14什么的用常量代替)
 
         "no-native-reassign": 2, // 禁止对原生对象赋值
         "no-shadow": 1,
