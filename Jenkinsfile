@@ -1,27 +1,22 @@
-// see https://dzone.com/refcardz/continuous-delivery-with-jenkins-workflow for tutorial
-// see https://documentation.cloudbees.com/docs/cookbook/_pipeline_dsl_keywords.html for dsl reference
-// This Jenkinsfile should simulate a minimal Jenkins pipeline and can serve as a starting point.
-// NOTE: sleep commands are solelely inserted for the purpose of simulating long running tasks when you run the pipeline
 node {
-   // Mark the code checkout 'stage'....
-   stage 'checkout'
-
-   // Get some code from a GitHub repository
-   git url: 'https://github.com/kesselborn/jenkinsfile'
-   sh 'git clean -fdx; sleep 4;'
-
-   stage 'build'
-   sh 'pwd'
-
-   stage 'archive'
-   archive 'target/*.jar'
-}
-
-
-node {
-   stage 'deploy Canary'
-   sh 'echo "write your deploy code here"; sleep 5;'
-
-   stage 'deploy Production'   
-   sh 'echo "write your deploy code here"; sleep 6;'   
+   stage('拉取镜像') {      
+      git branch: 'jenkenstest', url: 'https://github.com/fengzier/hehe.git'
+      sh 'rm -rf dist'
+      echo 'git clone done'
+   }
+   
+   stage('容器中编译代码'){
+       docker.image('node-build:3.0').inside {            
+           sh 'mkdir dist'
+           sh 'cp index.html dist'
+           sh 'tar cvf dist.tar.gz dist'
+       }
+   }
+   if(BUILDIMAGE == true ){
+        stage('编译镜像'){
+            image = docker.build '192.168.18.250:5002/jenkins/jenkins-test1:v${BUILDVERSION}'
+            image.push()
+       }
+   }
+   emailext body: '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS: Check console output at $BUILD_URL to view the results.', subject: '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!', to: 'feng.ye@youruncloud.com'
 }
